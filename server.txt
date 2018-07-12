@@ -1,2 +1,0 @@
-cd src\services
-json-server --watch articles.json --port 4000
