@@ -1,0 +1,47 @@
+.contacts
+  &-page
+    margin-top: 60px
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+  &_title
+    text-align: center
+    text-transform: uppercase
+    padding-top: 45px
+    margin: 0
+  &-form
+    display: flex
+    justify-content: space-between
+    align-items: flex-start
+    flex-wrap: wrap
+    max-width: 600px
+    margin: 0 auto
+    padding: 40px
+    @media screen and (max-width: 500px)
+      padding: 15px 0
+      margin-bottom: 30px
+    &_item
+      flex-basis: 100%
+      &__half
+        flex-basis: 49%
+        margin-bottom: 30px
+    &_label
+      color: #333
+      font-weight: 500
+      font-size: 14px
+    &_input, &_textarea
+      width: 100%
+      background-color: transparent
+      border-bottom: 1px solid #ef4747
+      color: #333
+      font-weight: 400
+      padding-bottom: 5px
+      resize: none
+      font-size: 14px
+    &_submit
+      margin-left: auto
+      margin-top: 15px
+.map
+  position: relative!important
+  height: 40vh!important
+  width: 100%

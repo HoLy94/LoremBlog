@@ -1,0 +1,40 @@
+.right-bar
+  flex-basis: 25%
+  &_header
+    padding: 45px 0
+    line-height: 42px
+  &_title
+    position: relative
+    transition: .5s
+    &::after
+      content: ''
+      position: absolute
+      bottom: 0
+      left: 0
+      height: 2px
+      width: 30px
+      background-color: #ef4747
+      transition: .5s
+  @media screen and (max-width: 768px)
+    flex-basis: 100%
+    &_header
+      padding-top: 0
+.popular
+  &-article
+    margin-bottom: 30px
+    padding-bottom: 5px
+    border-bottom: 1px solid #cccccc
+    &_title
+      color: #333333
+      transition: .5s
+      &:hover
+        color: #ef4747
+    &_header
+      margin-bottom: 10px
+    &_date, &_views, &_read
+      font-weight: normal
+      color: #737373
+    &_footer, &_header
+      display: flex
+      align-items: center
+      justify-content: space-between

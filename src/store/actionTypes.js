@@ -1,0 +1,24 @@
+export const SET_ARTICLES = 'SET_ARTICLES';
+export const SET_GALLERY = 'SET_GALLERY';
+export const TAKE_ARTICLE_TO_UPDATE = 'TAKE_ARTICLE_TO_UPDATE';
+export const CANCEL_ARTICLE_UPDATE = 'CANCEL_ARTICLE_UPDATE';
+export const UPDATE_ARTICLE = 'UPDATE_ARTICLE';
+export const NEW_ARTICLE = 'NEW_ARTICLE';
+export const CREATE_ARTICLE = 'CREATE_ARTICLE';
+export const CANCEL_ARTICLE_CREATE = 'CANCEL_ARTICLE_CREATE';
+export const DELETE_ARTICLE = 'DELETE_ARTICLE';
+
+//Popular\new article
+export const SET_POPULAR_ARTICLES = 'SET_POPULAR_ARTICLES';
+export const SET_NEW_ARTICLES = 'SET_NEW_ARTICLES';
+//Pagination\limit
+export const NEXT_PAGE = 'NEXT_PAGE';
+export const PREV_PAGE = 'PREV_PAGE';
+export const CURRENT_PAGE = 'CURRENT_PAGE';
+export const CHANGE_LIMIT = 'CHANGE_LIMIT';
+
+//Filter\sort
+export const CATEGORY_FILTER = 'CATEGORY_FILTER';
+export const CANCEL_CATEGORY_FILTER = 'CANCEL_CATEGORY_FILTER';
+export const SOR_BY_VIEWS = 'SORT_BY_VIEWS';
+export const SOR_BY_DATE = 'SORT_BY_DATE';
