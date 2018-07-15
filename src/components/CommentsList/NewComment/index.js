@@ -28,7 +28,7 @@ class NewComment extends Component {
                        onChange={this.handleChange}/>
                 <textarea className='comment_new-textarea' name='commentMessage' placeholder="Comment" rows='10'
                           value={this.state.commentMessage} onChange={this.handleChange}/>
-                <button className='btn' onClick={this.handleClick}>click</button>
+                <button className='btn' onClick={this.handleClick}>send</button>
             </div>
         )
     }

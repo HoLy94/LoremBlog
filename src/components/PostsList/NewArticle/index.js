@@ -43,7 +43,7 @@ class NewArticle extends Component {
             author: this.state.author,
             title: this.state.title,
             shortDescription: this.state.description,
-            content: this.state.content,
+            content: [{ paragraph: this.state.content}],
             img: this.state.img,
             category: this.state.category,
             views: this.state.views,
@@ -110,7 +110,7 @@ class NewArticle extends Component {
 }
 const mapStateToProps = state => {
     return {
-        articles: state.filteredArticles
+        articles: state.articles
     };
 };
 const mapDispatchToProps = dispatch => {
