@@ -52,7 +52,7 @@
         "Wood"
       ],
       "date": "2017-01-01",
-      "views": 11,
+      "views": 12,
       "timeToRead": 1
     },
     {
@@ -303,7 +303,7 @@
         "Lions"
       ],
       "date": "2017-06-24",
-      "views": 86,
+      "views": 87,
       "timeToRead": 4
     },
     {
@@ -613,9 +613,13 @@
         "Lions"
       ],
       "date": "2018-06-24",
-      "views": 69,
+      "views": 70,
       "timeToRead": 2,
       "comments": [
+        {
+          "name": "sssfads",
+          "message": "asfasf"
+        },
         {
           "name": "Oleg",
           "message": "New comment"
