@@ -6,7 +6,8 @@ class GalleryItem extends Component{
     };
     render() {
         return (
-            <div className='gallery_item' style={{backgroundImage: `url(${this.props.item.img})`}}>
+            <div className='gallery_item'>
+                <img className="gallery_item-img" src={this.props.item.img} alt={this.props.item.description}/>
                 <button className='gallery_item-btn' onClick={this.handleClick}><i className='fa fa-plus-circle'/></button>
             </div>
         )

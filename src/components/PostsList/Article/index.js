@@ -28,7 +28,7 @@ class Article extends Component {
         return (
             <article className='article'>
                 <header className='article_header'>
-                    <div className="article_img" style={{backgroundImage: `url(${article.img})`}}/>
+                    <img className="article_img" src={article.img}/>
                     {this.props.admin && <div className="article_change-panel">
                         <button className="article_edit" onClick={this.handleUpdate}><i className="fa fa-edit"/>
                         </button>
