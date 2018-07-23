@@ -8,6 +8,7 @@ class About extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
     }
+
     render() {
         return (
             <div className='container about-page'>
@@ -22,7 +23,7 @@ class About extends Component {
                         consequuntur, dicta dolorum et eveniet.</p>
                 </div>
                 <h1 className='home-page_title'>Our team</h1>
-                <TeamList />
+                <TeamList/>
             </div>
         );
     }

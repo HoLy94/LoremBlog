@@ -38,7 +38,7 @@ class PostsList extends Component {
                         />
                     )}
                     {this.props.maxPages > 1 &&
-                        <ArticlesPagination/>
+                    <ArticlesPagination/>
                     }
                 </div>
                 <RightBar/>

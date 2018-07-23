@@ -12,11 +12,11 @@ class Main extends Component {
         return (
             <React.Fragment>
                 <Switch>
-                    <Route path="/" component={Home} exact />
-                    <Route path="/about" component={About} />
-                    <Route path="/portfolio" component={Portfolio} />
-                    <Route path="/contacts" component={Contacts} />
-                    <Route path="/post/:id" component={PostFull} />
+                    <Route path="/" component={Home} exact/>
+                    <Route path="/about" component={About}/>
+                    <Route path="/portfolio" component={Portfolio}/>
+                    <Route path="/contacts" component={Contacts}/>
+                    <Route path="/post/:id" component={PostFull}/>
                 </Switch>
             </React.Fragment>
         );

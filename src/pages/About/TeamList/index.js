@@ -4,8 +4,9 @@ import TeamMember from './TeamMember';
 
 class TeamList extends Component {
     state = {
-        team : []
+        team: []
     };
+
     componentDidMount() {
         axios.get('/team')
             .then(response => {
@@ -14,6 +15,7 @@ class TeamList extends Component {
                 });
             });
     }
+
     render() {
         return (
             <div className="team-list">

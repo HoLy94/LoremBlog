@@ -18,6 +18,7 @@ class Home extends Component {
                 this.props.setNewArticles(response.data);
             });
     }
+
     render() {
         return (
             <React.Fragment>

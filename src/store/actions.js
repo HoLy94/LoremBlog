@@ -66,6 +66,7 @@ export function deleteArticleAction(id) {
         payload: id
     };
 }
+
 //Popular\new articles
 export function setPopularArticlesAction(articles) {
     return {
@@ -75,6 +76,7 @@ export function setPopularArticlesAction(articles) {
         },
     };
 }
+
 export function setNewArticlesAction(articles) {
     return {
         type: actionTypes.SET_NEW_ARTICLES,
@@ -83,6 +85,7 @@ export function setNewArticlesAction(articles) {
         },
     };
 }
+
 //Pagination\limit
 export function nextPageAction() {
     return {
@@ -119,18 +122,21 @@ export function categoryFilterAction(category) {
         payload: {category}
     }
 }
+
 export function cancelCategoryFilterAction() {
     return {
         type: actionTypes.CANCEL_CATEGORY_FILTER,
         payload: {}
     }
 }
+
 export function sortByViewsAction() {
     return {
         type: actionTypes.SOR_BY_VIEWS,
         payload: {}
     }
 }
+
 export function sortByDateAction() {
     return {
         type: actionTypes.SOR_BY_DATE,

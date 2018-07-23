@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import Gallery from '../../components/Gallery/index';
@@ -14,6 +14,7 @@ class Portfolio extends Component {
                 this.props.setGallery(response.data);
             });
     }
+
     render() {
         return (
             <div className='container portfolio-page'>

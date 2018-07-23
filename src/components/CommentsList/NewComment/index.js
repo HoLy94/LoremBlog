@@ -24,7 +24,8 @@ class NewComment extends Component {
         return (
             <div className='comment_new'>
                 <h2 className='comment_title'>You can leave a comment</h2>
-                <input className='comment_new-input' name='commentName' type="text" placeholder='Name' value={this.state.commentName}
+                <input className='comment_new-input' name='commentName' type="text" placeholder='Name'
+                       value={this.state.commentName}
                        onChange={this.handleChange}/>
                 <textarea className='comment_new-textarea' name='commentMessage' placeholder="Comment" rows='10'
                           value={this.state.commentMessage} onChange={this.handleChange}/>

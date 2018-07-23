@@ -5,7 +5,7 @@ import './index.css';
 import PopularList from "./PopularList";
 import NewList from "./NewList";
 
-class RightBar extends Component{
+class RightBar extends Component {
     render() {
         return (
             <section className='right-bar'>
@@ -21,6 +21,7 @@ class RightBar extends Component{
         )
     }
 }
+
 const mapStateToProps = state => {
     return {
         popularArticles: state.popularArticles,

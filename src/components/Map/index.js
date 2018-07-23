@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 export class MapContainer extends Component {
@@ -14,7 +14,7 @@ export class MapContainer extends Component {
                  }}>
                 <Marker
                     title={'We are here!'}
-                    position={{lat: 50.44965249, lng: 30.4657839}} />
+                    position={{lat: 50.44965249, lng: 30.4657839}}/>
             </Map>
         );
     }

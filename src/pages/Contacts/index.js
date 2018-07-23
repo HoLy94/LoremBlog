@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import MapContainer from '../../components/Map';
 
 import './index.css';
@@ -7,6 +7,7 @@ class Contacts extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
     }
+
     render() {
         return (
             <div className='contacts-page'>
@@ -28,7 +29,7 @@ class Contacts extends Component {
                         <button className="contacts-form_submit btn">Send</button>
                     </div>
                 </div>
-                <MapContainer />
+                <MapContainer/>
             </div>
 
         );
