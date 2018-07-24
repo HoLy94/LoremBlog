@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes';
+import {updateState} from './utility';
 
 const initialState = {
     isAdmin: true,
@@ -26,18 +27,6 @@ const setArticles = (state, action) => {
         filteredArticles: action.payload.articles.reverse(),
         articlesPage: action.payload.articles.reverse().slice(0, state.limit),
         maxPages: Math.ceil(action.payload.articles.length / state.limit)
-    };
-};
-const setGallery = (state, action) => {
-    return {
-        ...state,
-        galleryItems: [...action.payload.items],
-    };
-};
-const newArticle = state => {
-    return {
-        ...state,
-        isArticleCreate: true
     };
 };
 const createArticle = (state, action) => {
@@ -69,17 +58,17 @@ const takeArticleToUpdate = (state, action) => {
 };
 const updateArticle = (state, action) => {
     const updatedArticle = state.articles.map(article => {
-            if (article.id === +action.payload.article.id) {
-                return {
-                    ...article,
-                    title: action.payload.article.title,
-                    author: action.payload.article.author,
-                    date: action.payload.article.date,
-                    img: action.payload.article.img
-                }
+        if (article.id === +action.payload.article.id) {
+            return {
+                ...article,
+                title: action.payload.article.title,
+                author: action.payload.article.author,
+                date: action.payload.article.date,
+                img: action.payload.article.img
             }
-            return article;
-        });
+        }
+        return article;
+    });
     return {
         ...state,
         articles: updatedArticle,
@@ -202,30 +191,50 @@ const sortByDate = state => {
 };
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.SET_ARTICLES: return setArticles(state, action);
-        case actionTypes.SET_GALLERY: return setGallery(state, action);
-        case actionTypes.NEW_ARTICLE: return newArticle(state);
-        case actionTypes.CREATE_ARTICLE: return createArticle(state, action);
-        case actionTypes.CANCEL_ARTICLE_CREATE: return cancelArticleCreate(state);
-        case actionTypes.TAKE_ARTICLE_TO_UPDATE: return takeArticleToUpdate(state, action);
-        case actionTypes.UPDATE_ARTICLE: return updateArticle(state, action);
-        case actionTypes.CANCEL_ARTICLE_UPDATE: return cancelArticleUpdate(state);
-        case actionTypes.DELETE_ARTICLE: return deleteArticle(state, action);
+        case actionTypes.SET_ARTICLES:
+            return setArticles(state, action);
+        case actionTypes.SET_GALLERY:
+            return updateState(state, {galleryItems: [...action.payload.items]});
+        case actionTypes.NEW_ARTICLE:
+            return updateState(state, {isArticleCreate: true});
+        case actionTypes.CREATE_ARTICLE:
+            return createArticle(state, action);
+        case actionTypes.CANCEL_ARTICLE_CREATE:
+            return cancelArticleCreate(state);
+        case actionTypes.TAKE_ARTICLE_TO_UPDATE:
+            return takeArticleToUpdate(state, action);
+        case actionTypes.UPDATE_ARTICLE:
+            return updateArticle(state, action);
+        case actionTypes.CANCEL_ARTICLE_UPDATE:
+            return cancelArticleUpdate(state);
+        case actionTypes.DELETE_ARTICLE:
+            return deleteArticle(state, action);
         //Popular\new articles
-        case actionTypes.SET_POPULAR_ARTICLES: return setPopularArticle(state, action);
-        case actionTypes.SET_NEW_ARTICLES: return setNewArticles(state, action);
+        case actionTypes.SET_POPULAR_ARTICLES:
+            return setPopularArticle(state, action);
+        case actionTypes.SET_NEW_ARTICLES:
+            return setNewArticles(state, action);
         //Pagination\limit
-        case actionTypes.NEXT_PAGE: return nextPage(state);
-        case actionTypes.PREV_PAGE: return prevPage(state);
-        case actionTypes.CURRENT_PAGE: return currentPage(state, action);
-        case actionTypes.CHANGE_LIMIT: return changeLimit(state, action);
+        case actionTypes.NEXT_PAGE:
+            return nextPage(state);
+        case actionTypes.PREV_PAGE:
+            return prevPage(state);
+        case actionTypes.CURRENT_PAGE:
+            return currentPage(state, action);
+        case actionTypes.CHANGE_LIMIT:
+            return changeLimit(state, action);
         //Filter\sort
-        case actionTypes.CATEGORY_FILTER: return categoryFilter(state, action);
-        case actionTypes.CANCEL_CATEGORY_FILTER: return cancelCategoryFilter(state);
-        case actionTypes.SOR_BY_VIEWS: return sortByViews(state);
-        case actionTypes.SOR_BY_DATE: return sortByDate(state);
+        case actionTypes.CATEGORY_FILTER:
+            return categoryFilter(state, action);
+        case actionTypes.CANCEL_CATEGORY_FILTER:
+            return cancelCategoryFilter(state);
+        case actionTypes.SOR_BY_VIEWS:
+            return sortByViews(state);
+        case actionTypes.SOR_BY_DATE:
+            return sortByDate(state);
         //Default
-        default: return state;
+        default:
+            return state;
     }
 };
 
