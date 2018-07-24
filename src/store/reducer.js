@@ -68,32 +68,22 @@ const takeArticleToUpdate = (state, action) => {
     };
 };
 const updateArticle = (state, action) => {
+    const updatedArticle = state.articles.map(article => {
+            if (article.id === +action.payload.article.id) {
+                return {
+                    ...article,
+                    title: action.payload.article.title,
+                    author: action.payload.article.author,
+                    date: action.payload.article.date,
+                    img: action.payload.article.img
+                }
+            }
+            return article;
+        });
     return {
         ...state,
-        articles: state.articles.map(article => {
-            if (article.id === +action.payload.article.id) {
-                return {
-                    ...article,
-                    title: action.payload.article.title,
-                    author: action.payload.article.author,
-                    date: action.payload.article.date,
-                    img: action.payload.article.img
-                }
-            }
-            return article;
-        }),
-        articlesPage: state.articlesPage.map(article => {
-            if (article.id === +action.payload.article.id) {
-                return {
-                    ...article,
-                    title: action.payload.article.title,
-                    author: action.payload.article.author,
-                    date: action.payload.article.date,
-                    img: action.payload.article.img
-                }
-            }
-            return article;
-        }),
+        articles: updatedArticle,
+        articlesPage: updatedArticle,
         isArticleUpdated: false
     };
 };
@@ -164,19 +154,16 @@ const changeLimit = (state, action) => {
     };
 };
 const categoryFilter = (state, action) => {
+    const articles = state.articles.filter(article => {
+        return article.category.includes(action.payload.category)
+    });
     return {
         ...state,
         currentPage: 1,
         filteredCategory: action.payload.category,
-        filteredArticles: state.articles.filter(article => {
-            return article.category.includes(action.payload.category)
-        }),
-        articlesPage: state.articles.filter(article => {
-            return article.category.includes(action.payload.category)
-        }).slice(0, state.limit),
-        maxPages: Math.ceil(state.articles.filter(article => {
-            return article.category.includes(action.payload.category)
-        }).length / state.limit),
+        filteredArticles: articles,
+        articlesPage: articles.slice(0, state.limit),
+        maxPages: Math.ceil(articles.length / state.limit),
     };
 };
 const cancelCategoryFilter = state => {
