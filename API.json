@@ -358,7 +358,7 @@
         "Wood"
       ],
       "date": "2017-10-12",
-      "views": 52,
+      "views": 53,
       "timeToRead": 2
     },
     {
@@ -613,7 +613,13 @@
         "Lions"
       ],
       "date": "2018-6-24",
-      "views": 74
+      "views": 76,
+      "comments": [
+        {
+          "name": "Vasyl",
+          "message": "fasfafasfasf"
+        }
+      ]
     }
   ],
   "team": [

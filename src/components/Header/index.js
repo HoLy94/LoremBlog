@@ -50,10 +50,12 @@ class Header extends Component {
     };
 
     render() {
+        const {isDropDownOpen, isMobileMenu} = this.state;
+
         return (
             <header className='header'>
                 <Link to="/" className='header_logo'>Lorem<span className='header_logo__red'>Blog</span></Link>
-                <nav className={classNames("header_nav nav", {"nav__mobile": this.state.isMobileMenu})}>
+                <nav className={classNames("header_nav nav", {"nav__mobile": isMobileMenu})}>
                     <NavLink
                         to="/"
                         exact
@@ -73,13 +75,13 @@ class Header extends Component {
                         activeClassName="nav_link__active"
                         onClick={this.closeMobile}
                     >Portfolio </NavLink>
-                    <a className={classNames("nav_link dropDown", {"dropDown__active": this.state.isDropDownOpen})}
+                    <a className={classNames("nav_link dropDown", {"dropDown__active": isDropDownOpen})}
                        onClick={this.toggleDropDown}>DropDown
                         <i className="fa fa-sort-down"/>
                         <CSSTransition
                             mountOnEnter
                             unmountOnExit
-                            in={this.state.isDropDownOpen}
+                            in={isDropDownOpen}
                             timeout={300}
                             classNames={{
                                 enterActive: 'dropDown_list__opening',
@@ -99,7 +101,7 @@ class Header extends Component {
                         onClick={this.closeMobile}
                     >Contacts </NavLink>
                 </nav>
-                <div className={classNames("burger", {"burger__opened": this.state.isMobileMenu})}
+                <div className={classNames("burger", {"burger__opened": isMobileMenu})}
                      onClick={this.openMobileMenu}>
                     <span className="burger_item"/>
                     <span className="burger_item"/>

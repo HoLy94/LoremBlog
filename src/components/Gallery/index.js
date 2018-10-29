@@ -47,12 +47,15 @@ class Gallery extends Component {
     };
 
     render() {
+        const {items} = this.props;
+        const {isOpen, openedItem} = this.state;
+
         return (
             <section className="gallery">
-                {this.props.items.map(item =>
+                {items.map(item =>
                     <GalleryItem item={item} key={item.id} click={this.openImg}/>
                 )}
-                {this.state.isOpen && <OpenedItem item={this.state.openedItem} click={this.closeImg}/>}
+                {isOpen && <OpenedItem item={openedItem} click={this.closeImg}/>}
             </section>
         );
     }

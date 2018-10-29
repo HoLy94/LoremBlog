@@ -5,34 +5,37 @@ import {connect} from "react-redux";
 
 class ArticlesPagination extends Component {
     render() {
+        const {currentPage, prev, current, next, max} = this.props;
         const pages = [];
-        for (let i = 1; i <= this.props.max; i++) {
+
+        for (let i = 1; i <= max; i++) {
             pages.push(i);
         }
+
         return (
             <div className="articles-list_pagination">
                 <button
                     className={classNames("btn btn__prev-page",
-                        {"btn__disabled": this.props.currentPage <= 1})}
-                    disabled={this.props.currentPage <= 1}
-                    onClick={() => this.props.prev()}>
+                        {"btn__disabled": currentPage <= 1})}
+                    disabled={currentPage <= 1}
+                    onClick={() => prev()}>
                     <i className="fa fa-angle-double-left"/> prev
                 </button>
                 <div className='articles-list_pagination-current'>
                     {pages.map(number =>
                         <button
-                            className={classNames("btn btn__current-page", {"btn__disabled": this.props.currentPage === number})}
+                            className={classNames("btn btn__current-page", {"btn__disabled": currentPage === number})}
                             name={number}
                             key={number}
-                            disabled={this.props.currentPage === number}
-                            onClick={event => this.props.current(event.target.name)}>{number}</button>)
+                            disabled={currentPage === number}
+                            onClick={event => current(event.target.name)}>{number}</button>)
                     }
                 </div>
                 <button
                     className={classNames("btn btn__next-page",
-                        {"btn__disabled": this.props.currentPage === this.props.max})}
-                    disabled={this.props.currentPage === this.props.max}
-                    onClick={() => this.props.next()}>
+                        {"btn__disabled": currentPage === max})}
+                    disabled={currentPage === max}
+                    onClick={() => next()}>
                     next <i className="fa fa-angle-double-right"/></button>
             </div>
         );

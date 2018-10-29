@@ -16,16 +16,17 @@ class NewArticle extends Component {
         isImageLoaded: false,
         id: this.props.articles.length + 1
     };
-    handleChange = (event) => {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
+    handleChange = event => {
+        const {target: {value, name}} = event;
+
         this.setState({
             [name]: value
         });
     };
-    handleImg = (event) => {
-        if (event.target.files && event.target.files[0]) {
+    handleImg = event => {
+        const {target: {files}} = event;
+
+        if (files && files[0]) {
             let reader = new FileReader();
             reader.onload = (e) => {
                 this.setState({
@@ -33,7 +34,7 @@ class NewArticle extends Component {
                     isImageLoaded: true
                 });
             };
-            reader.readAsDataURL(event.target.files[0]);
+            reader.readAsDataURL(files[0]);
         }
     };
     handleCreate = () => {
@@ -51,23 +52,29 @@ class NewArticle extends Component {
             id: this.state.id,
             timeToRead: 2
         };
-        this.props.create(data);
+        const {create} = this.props;
+
+        create(data);
         axios.post('/articles/', data);
     };
     handleCancel = () => {
+        const {cancel} = this.props;
+
         document.body.classList.remove('modal__open');
-        this.props.cancel();
+        cancel();
     };
     render() {
+        const {img, isImageLoaded, title, author, description, content} = this.state;
+
         return (
             <div className="article_new">
                 <header className="article_new-header">
-                    {this.state.img.length > 1 && <img className="article_new-img" src={this.state.img} alt='New'/>}
+                    {img.length > 1 && <img className="article_new-img" src={img} alt='New'/>}
                     <div className="article_new-img__new">
                         <label htmlFor="newImage">Add image <i className="fa fa-image"/></label>
                         <input type="file" id='newImage' onChange={this.handleImg}/>
                     </div>
-                    <button className={classNames("article_new-close", {"article_new-close__loaded": this.state.isImageLoaded})} onClick={this.handleCancel}><i className="fa fa-times"/>
+                    <button className={classNames("article_new-close", {"article_new-close__loaded": isImageLoaded})} onClick={this.handleCancel}><i className="fa fa-times"/>
                     </button>
                 </header>
                 <div className="article_new-input">
@@ -75,7 +82,7 @@ class NewArticle extends Component {
                     <input
                         name='title'
                         type="text"
-                        value={this.state.newTitle}
+                        value={title}
                         onChange={this.handleChange}/>
                 </div>
                 <div className="article_new-input">
@@ -83,21 +90,21 @@ class NewArticle extends Component {
                     <input
                         name='author'
                         type="text"
-                        value={this.state.author}
+                        value={author}
                         onChange={this.handleChange}/>
                 </div>
                 <div className="article_new-input">
                     <h3>Description: </h3>
                     <textarea
                         name='description'
-                        value={this.state.description}
+                        value={description}
                         onChange={this.handleChange}/>
                 </div>
                 <div className="article_new-input">
                     <h3>Content: </h3>
                     <textarea
                         name='content'
-                        value={this.state.content}
+                        value={content}
                         onChange={this.handleChange}/>
                 </div>
                 <footer className="article_new-footer">

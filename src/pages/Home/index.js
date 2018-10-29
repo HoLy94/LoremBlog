@@ -10,12 +10,14 @@ import * as actions from "../../store/actions";
 
 class Home extends Component {
     componentDidMount() {
+        const {setArticles, setPopularArticles, setNewArticles} = this.props;
+
         window.scrollTo(0, 0);
         axios.get('/articles')
             .then(response => {
-                this.props.setArticles(response.data);
-                this.props.setPopularArticles(response.data);
-                this.props.setNewArticles(response.data);
+                setArticles(response.data);
+                setPopularArticles(response.data);
+                setNewArticles(response.data);
             });
     }
 

@@ -17,9 +17,11 @@ class TeamList extends Component {
     }
 
     render() {
+        const {team} = this.state;
+
         return (
             <div className="team-list">
-                {this.state.team.map(member =>
+                {team.map(member =>
                     <TeamMember member={member} key={member.id}/>
                 )}
             </div>

@@ -25,6 +25,7 @@ class PostFull extends Component {
         this.setState({
             openedArticle: article
         });
+
         axios.put(`/articles/${article.id}`, article);
     };
 

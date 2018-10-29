@@ -4,9 +4,11 @@ import NewArticle from './NewArticle';
 
 class NewList extends Component{
     render() {
+        const {articles} = this.props;
+
         return (
             <ul className='popular-list'>
-                {this.props.articles.map(article =>
+                {articles.map(article =>
                     <NewArticle article={article} key={article.id}/>
                 )}
             </ul>

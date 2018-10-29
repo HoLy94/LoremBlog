@@ -4,9 +4,11 @@ import PopularArticle from './PopularArticle';
 
 class PopularList extends Component{
     render() {
+        const {articles} = this.props;
+
         return (
             <ul className='popular-list'>
-                {this.props.articles.map(article =>
+                {articles.map(article =>
                     <PopularArticle article={article} key={article.id}/>
                 )}
             </ul>

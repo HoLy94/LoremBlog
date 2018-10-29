@@ -27,9 +27,11 @@ class Slider extends Component {
     };
 
     render() {
+        const {activeSlide} = this.state;
+
         return (
             <section className="slider">
-                <Slide slide={this.state.activeSlide}/>
+                <Slide slide={activeSlide}/>
                 <PrevSlide click={this.prevSlide}/>
                 <NextSlide click={this.nextSlide}/>
             </section>

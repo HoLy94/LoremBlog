@@ -16,17 +16,19 @@ class ChangeArticle extends Component {
         date: `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`,
         views: this.props.article.views
     };
+
     handleChange = (event) => {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
+        const {target: {value, name}} = event;
 
         this.setState({
             [name]: value
         });
     };
+
     handleImg = (event) => {
-        if (event.target.files && event.target.files[0]) {
+        const {target: {files}} = event;
+
+        if (files && files[0]) {
             let reader = new FileReader();
             reader.onload = (e) => {
                 this.setState({
@@ -34,7 +36,7 @@ class ChangeArticle extends Component {
                     isImageLoaded: true
                 });
             };
-            reader.readAsDataURL(event.target.files[0]);
+            reader.readAsDataURL(files[0]);
         }
     };
     handleUpdate = () => {
@@ -49,8 +51,9 @@ class ChangeArticle extends Component {
             date: this.state.date,
             views: this.state.views,
         };
+        const {update} = this.props;
 
-        this.props.update(data);
+        update(data);
 
         axios.put(`/articles/${data.id}`, data)
             .then(() => {
@@ -58,15 +61,19 @@ class ChangeArticle extends Component {
             });
     };
     handleCancel = () => {
+        const {cancel} = this.props;
+
         document.body.classList.remove('modal__open');
-        this.props.cancel();
+        cancel();
     };
 
     render() {
+        const {title, author, description, img} = this.state;
+
         return (
             <div className="article_change">
                 <header className="article_change-header">
-                    <img className="article_change-img" src={this.state.img} alt='New'/>
+                    <img className="article_change-img" src={img} alt='New'/>
                     <div className="article_change-img__new">
                         <label htmlFor="newImage">Change image <i className="fa fa-image"/></label>
                         <input type="file" id='newImage' onChange={this.handleImg}/>
@@ -79,7 +86,7 @@ class ChangeArticle extends Component {
                     <input
                         name='title'
                         type="text"
-                        value={this.state.title}
+                        value={title}
                         onChange={this.handleChange}/>
                 </div>
                 <div className="article_change-input">
@@ -87,16 +94,16 @@ class ChangeArticle extends Component {
                     <input
                         name='author'
                         type="text"
-                        value={this.state.author}
+                        value={author}
                         onChange={this.handleChange}/>
                 </div>
                 <div className="article_new-input">
                     <h3>Description: </h3>
                     <textarea
                         name='description'
-                        value={this.state.description}
+                        value={description}
                         onChange={this.handleChange}
-                    rows={5}/>
+                        rows={5}/>
                 </div>
                 <footer className="article_change-footer">
                     <button className="btn article_change-btn" onClick={this.handleCancel}>cancel</button>

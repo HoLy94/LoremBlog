@@ -4,32 +4,37 @@ import {connect} from "react-redux";
 
 class TopPanel extends Component {
     handleNewArticle = () => {
+        const {newArticle} = this.props;
+
         document.body.classList.add('modal__open');
-        this.props.newArticle();
+        newArticle();
     };
+
     render() {
+        const {category, cancelCategoryFilter, admin, dateSort, viewsSort, changeLimit} = this.props;
+
         return (
             <header className="articles-list_header">
                 <h2 className='articles-list_title'>Blog</h2>
                 <div className="articles-list_filter">
-                    {this.props.category &&
+                    {category &&
                     <button
                         className="articles-list_filter-category"
-                        onClick={() => this.props.cancelCategoryFilter()}>
-                        {this.props.category} <i className="fa fa-times-circle"/>
+                        onClick={() => cancelCategoryFilter()}>
+                        {category} <i className="fa fa-times-circle"/>
                     </button>}
-                    {this.props.admin &&
+                    {admin &&
                     <button className="articles-list_new-article-btn" onClick={this.handleNewArticle}>
                         <i className="fa fa-plus"/>
                     </button>}
-                    <button className="articles-list_new-article-btn" onClick={() => this.props.dateSort()}>
+                    <button className="articles-list_new-article-btn" onClick={() => dateSort()}>
                         <i className="fa fa-calendar"/>
                     </button>
-                    <button className="articles-list_new-article-btn" onClick={() => this.props.viewsSort()}>
+                    <button className="articles-list_new-article-btn" onClick={() => viewsSort()}>
                         <i className="fa fa-eye"/>
                     </button>
                     <select className='articles-list_filter-select' value={this.props.limit}
-                            onChange={event => this.props.changeLimit(event.target.value)}>
+                            onChange={event => changeLimit(event.target.value)}>
                         <option value="6">6</option>
                         <option value="12">12</option>
                         <option value="18">18</option>

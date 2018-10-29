@@ -13,37 +13,42 @@ import './index.css';
 import * as actions from "../../store/actions";
 
 class PostsList extends Component {
+
     deleteArticle = (article) => {
+        const {_delete} = this.props;
+
         axios.delete(`/articles/${article.id}`)
             .then(response => {
                 console.log(response);
                 console.log(response.data);
             });
-        this.props._delete(article);
+        _delete(article);
     };
 
     render() {
+        const {articles, admin, deleteArticle, takeUpdateArticle, categoryFilter, maxPages, isArticleUpdated, isArticleCreate} = this.props;
+
         return (
             <section className='container articles'>
                 <div className='articles-list'>
-                    <TopPanel admin={this.props.admin}/>
-                    {this.props.articles.map(article =>
+                    <TopPanel admin={admin}/>
+                    {articles.map(article =>
                         <Article
                             key={article.id}
                             article={article}
                             onDelete={this.deleteArticle}
-                            onUpdate={this.props.takeUpdateArticle}
-                            onFilter={this.props.categoryFilter}
-                            admin={this.props.admin}
+                            onUpdate={takeUpdateArticle}
+                            onFilter={categoryFilter}
+                            admin={admin}
                         />
                     )}
-                    {this.props.maxPages > 1 &&
+                    {maxPages > 1 &&
                     <ArticlesPagination/>
                     }
                 </div>
                 <RightBar/>
-                {this.props.isArticleUpdated && <ChangeArticle/>}
-                {this.props.isArticleCreate && <NewArticle/>}
+                {isArticleUpdated && <ChangeArticle/>}
+                {isArticleCreate && <NewArticle/>}
             </section>
         );
     }
