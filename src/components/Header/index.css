@@ -197,3 +197,18 @@
   @media screen and (max-width: 950px) {
     .burger {
       display: flex; } }
+
+.languages {
+  position: absolute;
+  right: 30px;
+  color: #fff; }
+  .languages_button {
+    color: #fff;
+    cursor: pointer;
+    background: transparent;
+    text-transform: uppercase;
+    margin: 0 5px; }
+    .languages_button:first-child {
+      margin-left: 0; }
+    .languages_button:last-child {
+      margin-right: 0; }

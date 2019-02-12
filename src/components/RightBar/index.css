@@ -30,6 +30,9 @@
     transition: .5s; }
     .popular-article_title:hover {
       color: #ef4747; }
+      @media screen and (max-width: 500px) {
+        .popular-article_title:hover {
+          font-size: 14px; } }
   .popular-article_header {
     margin-bottom: 10px; }
   .popular-article_date, .popular-article_views, .popular-article_read {

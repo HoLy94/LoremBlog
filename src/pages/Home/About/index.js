@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 import homeAbout from '../../../img/home-about.jpg';
 
 class About extends Component {
-
     render() {
         return (
             <section className="home-page_about container">

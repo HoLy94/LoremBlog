@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import classNames from 'classnames';
 import {NavLink, Link} from 'react-router-dom';
+import { withTranslation } from 'react-i18next';
 
 import './index.css';
 import ReactDOM from "react-dom";
@@ -49,8 +50,15 @@ class Header extends Component {
         })
     };
 
+    handleLanguageChange = lng => {
+        const {i18n} = this.props;
+
+        i18n.changeLanguage(lng);
+    };
+
     render() {
         const {isDropDownOpen, isMobileMenu} = this.state;
+        const {t} = this.props;
 
         return (
             <header className='header'>
@@ -62,19 +70,19 @@ class Header extends Component {
                         className="nav_link"
                         activeClassName="nav_link__active"
                         onClick={this.closeMobile}
-                    >Home </NavLink>
+                    >{t('home')} </NavLink>
                     <NavLink
                         to="/about"
                         className="nav_link"
                         activeClassName="nav_link__active"
                         onClick={this.closeMobile}
-                    >About </NavLink>
+                    >{t('about')} </NavLink>
                     <NavLink
                         to="/portfolio"
                         className="nav_link"
                         activeClassName="nav_link__active"
                         onClick={this.closeMobile}
-                    >Portfolio </NavLink>
+                    >{t('portfolio')} </NavLink>
                     <a className={classNames("nav_link dropDown", {"dropDown__active": isDropDownOpen})}
                        onClick={this.toggleDropDown}>DropDown
                         <i className="fa fa-sort-down"/>
@@ -99,8 +107,13 @@ class Header extends Component {
                         className="nav_link"
                         activeClassName="nav_link__active"
                         onClick={this.closeMobile}
-                    >Contacts </NavLink>
+                    >{t('contacts')} </NavLink>
                 </nav>
+                <div className='languages'>
+                    <button className='languages_button' onClick={() => this.handleLanguageChange('ua')}>ua</button>
+                    /
+                    <button className='languages_button' onClick={() => this.handleLanguageChange('en')}>en</button>
+                </div>
                 <div className={classNames("burger", {"burger__opened": isMobileMenu})}
                      onClick={this.openMobileMenu}>
                     <span className="burger_item"/>
@@ -112,4 +125,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default withTranslation()(Header);

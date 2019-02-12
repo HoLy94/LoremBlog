@@ -5,14 +5,14 @@ import slideThree from '../../img/slide-3.jpg';
 export const slides = [
     {
         img: slideOne,
-        title: 'Lorem ipsum dolor sit amet'
+        title: 'slide_one'
     },
     {
         img: slideTwo,
-        title: 'Lorem ipsum dolor'
+        title: 'slide_two'
     },
     {
         img: slideThree,
-        title: 'Lorem ipsum dolor sit'
+        title: 'slide_three'
     }
 ];

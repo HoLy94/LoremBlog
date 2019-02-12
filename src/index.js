@@ -5,6 +5,7 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import axios from 'axios';
 
+import './i18n';
 import 'normalize.css';
 import './index.css';
 import 'font-awesome/css/font-awesome.min.css';
